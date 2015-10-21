@@ -1,0 +1,19 @@
+div(ng-controller='productController as product')
+	table.table.table-hover
+		//- thead
+		//- 	tr
+		//- 		th Name task
+		//- 		th Tags
+		//- 		th Actual effort
+		//- 		th Estimated effort
+		//- 		th Due date
+		//- tbody
+		//- 	a
+		//- 		tr(ng-repeat='task in tasks.tasksData | filter:{obj_status : "active"}' high-Priority task = "task")
+		//- 			td 
+		//- 				a(href = '#/task/{{task.id}}'){{task.name}}
+		//- 			td 
+		//- 				span(ng-repeat = 'tag in task.tags'){{tag}} 
+		//- 			td {{task.actual_effort}}
+		//- 			td {{task.estimated_effort}}
+		//- 			td {{task.due_date | date:"dd/MM/yyyy 'at' HH:mm"}}
