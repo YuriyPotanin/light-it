@@ -92,6 +92,8 @@ module.exports = function(grunt) {
                     'bower_components/angular-route/angular-route.js',
                     'bower_components/angular-resource/angular-resource.js',
                     'bower_components/angular-cookies/angular-cookies.js',
+                    'bower_components/angular-bootstrap/ui-bootstrap.js',
+                    'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
                     'bower_components/jquery/dist/jquery.js',
                     'bower_components/bootstrap/dist/js/bootstrap.min.js'
 
@@ -102,11 +104,25 @@ module.exports = function(grunt) {
             css: {
                 src: [
                     'bower_components/bootstrap/dist/css/bootstrap.css',
-                    'bower_components/bootstrap/dist/css/bootstrap-theme.css'
+                    'bower_components/bootstrap/dist/css/bootstrap-theme.css',
+                    'bower_components/angular-bootstrap/ui-bootstrap-csp.css'
+
                 ],
                 dest: 'public/styles/css/libs.css'
+            },
+        },
+        copy: {
+            fonts: {
+                files: [{
+                    expand: true,
+                    cwd: 'bower_components/bootstrap/fonts/',
+                    src: ['**'],
+                    dest: 'public/styles/fonts'
+                }]
             }
+
         }
+
     };
 
     grunt.initConfig(config);
@@ -122,6 +138,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-karma');
 
-    grunt.registerTask('default', ['jshint', 'stylus', 'clean', 'jade', 'concat', 'browserify']);
+    grunt.registerTask('default', ['jshint', 'stylus', 'clean', 'jade', 'copy', 'concat', 'browserify']);
 
 };

@@ -1,0 +1,19 @@
+div(ng-controller='productsCtrl as products')
+	.container
+		row
+			article.col-xs-6.col-xs-offset-3
+				.list-group
+					a.list-group-item.productList(href='/#/products' ng-repeat = "product in products.products" ng-click = "products.getProductReviews(product.id)")
+						img.img.img-thumbnail.col-xs-5(ng-src = 'http://smktesting.herokuapp.com/static/{{product.img}}')
+						.col-xs-7
+							h2.text-right.title {{product.title}}
+							span.col-xs-offset-2 {{product.text}}
+			article
+				.panel.panel-default.col-xs-offset-9(ng-repeat = "review in products.productReviews")
+					.panel-heading {{review.created_by.username}} 
+						span.col-xs-8 {{review.rate}}{{review.created_at}}
+					.panel-body
+						| {{review.text}}
+	uib-rating(ng-model="products.rate" max="5")
+	textarea(rows="3" ng-model = "products.text")
+	button.btn.btn-primarybtn.btn-primary(type = 'button' ng-click = "products.saveReview()") submit
