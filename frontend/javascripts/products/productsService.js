@@ -30,9 +30,9 @@ function productsService($resource, $http, $cookies) {
 			rate: rate,
 			text: text
 		};
-		$http.post('http://smktesting.herokuapp.com/api/reviews/' + productId,reviewObject, {headers: {'Authorization':"Basic " +$cookies.get("productsCoockies")}
+		$http.post('http://smktesting.herokuapp.com/api/reviews/' + productId,reviewObject, {headers: {'Authorization':"Token " +$cookies.get("productsCoockies")}
 }).success(function(response) {
-
+			callback(response);
 		});
 	};
 

@@ -1,9 +1,9 @@
 var app = require('../app');
 
 angular.module('productsModule').controller('productsCtrl', productsCtrlFn);
-productsCtrlFn.$inject = ['productsService', 'loginService'];
+productsCtrlFn.$inject = ['productsService', 'loginService', "$cookies"];
 
-function productsCtrlFn(productsService, loginService) {
+function productsCtrlFn(productsService, loginService, $cookies) {
 	var mv = this;
 	mv.productReviews = [];
 	mv.selectedProduct = '';
@@ -28,7 +28,19 @@ function productsCtrlFn(productsService, loginService) {
 
 	mv.saveReview = function() {
 		if (mv.rate && mv.text !== "") {
-			productsService.saveReview(mv.rate, mv.text, mv.selectedProduct, function(response) {});
+
+			productsService.saveReview(mv.rate, mv.text, mv.selectedProduct, function(response) {
+				if(response.success){
+					var username = $cookies.get('userName');
+					newReview = {
+						created_at: new Date(),
+						product: mv.selectedProduct,
+						text: mv.text,
+						rate: mv.rate,
+					};
+					mv.productReviews.push(newReview);
+				}
+			});
 		} else {
 			alert("enter text and rating");
 		}
