@@ -1,19 +1,28 @@
 div(ng-controller='productsCtrl as products')
 	.container
-		row
-			article.col-xs-6.col-xs-offset-3
-				.list-group
-					a.list-group-item.productList(href='/#/products' ng-repeat = "product in products.products" ng-click = "products.getProductReviews(product.id)")
-						img.img.img-thumbnail.col-xs-5(ng-src = 'http://smktesting.herokuapp.com/static/{{product.img}}')
-						.col-xs-7
-							h2.text-right.title {{product.title}}
-							span.col-xs-offset-2 {{product.text}}
-			article
-				.panel.panel-default.col-xs-offset-9(ng-repeat = "review in products.productReviews")
-					.panel-heading {{review.created_by.username}} 
-						span.col-xs-8 {{review.rate}}{{review.created_at}}
+		.logout 
+			button.btn.btn-default.submit(type = 'button' ng-click = "products.logout()") LogOut
+			button.btn.btn-default.submit(type = 'button' ng-click = "products.toLogin()") Go to login 
+		.flaxContainer
+			.producutIdem(ng-repeat = "product in products.products")
+				a.productList.list-group-item(href='/#/products'  ng-click = "products.getProductReviews(product.id)")
+					.imgClass.col-xs-5
+						img.img.imgClass(ng-src = 'http://smktesting.herokuapp.com/static/{{product.img}}')
+					.col-xs-7
+						h2.text-right.title {{product.title}}
+						span.col-xs-offset-2 {{product.text}}{{$index+1}}
+
+				.jumbotron(ng-show = "product.id == products.selectedProduct")
+					textarea.textarea(rows="3" ng-model = "products.text")
+					br
+					uib-rating(ng-model="products.rate" max="5" )
+					button.btn.btn-primarybtn.btn-primary.submit(type = 'button' ng-click = "products.saveReview()") submit
+				.panel.panel-default(ng-repeat = "review in products.productReviews " ng-show = "product.id == review.product")
+					.panel-heading 
+						span{{review.created_by.username}} 
+							uib-rating(ng-model="review.rate" max="5" readonly ='true')
+						.col-xs-4.date{{review.created_at | date:"dd/MM/yyyy"}}
 					.panel-body
 						| {{review.text}}
-	uib-rating(ng-model="products.rate" max="5")
-	textarea(rows="3" ng-model = "products.text")
-	button.btn.btn-primarybtn.btn-primary(type = 'button' ng-click = "products.saveReview()") submit
+
+

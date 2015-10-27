@@ -1,7 +1,7 @@
 {
-  "name": "ardas-test-server",
+  "name": "LightIt-test-server",
   "version": "1.0.0",
-  "description": "ardasTestServer",
+  "description": "LightItTestServer",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/YuriyPotanin/ardasTest.git"
+    "url": "git+https://github.com/YuriyPotanin/LightItTest.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/YuriyPotanin/ardasTest/issues"
+    "url": "https://github.com/YuriyPotanin/LightItTest/issues"
   },
-  "homepage": "https://github.com/YuriyPotanin/ardasTest#readme",
+  "homepage": "https://github.com/YuriyPotanin/LightItTest#readme",
   "dependencies": {
     "angular-mocks": "^1.4.5",
     "express": "^4.13.3",
@@ -29,14 +29,7 @@
     "grunt-contrib-jshint": "^0.11.3",
     "grunt-contrib-stylus": "^0.22.0",
     "grunt-contrib-uglify": "^0.9.2",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-karma": "^0.12.0",
-    "jasmine-core": "^2.3.4",
-    "karma": "^0.13.9",
-    "karma-browserify": "^4.3.0",
-    "karma-chrome-launcher": "^0.2.0",
-    "karma-jasmine": "^0.3.6",
-    "karma-phantomjs-launcher": "^0.2.1",
-    "phantomjs": "^1.9.18"
+    "grunt-contrib-watch": "^0.6.1"
+
   }
 }

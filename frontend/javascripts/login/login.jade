@@ -1,8 +1,12 @@
 div(ng-controller='loginController as login')
-	.form-group
-		label(for='usr') Name:
-		input#usr.form-control(type='text' ng-model = "login.userName")
-	.form-group
-		label(for='pwd') Password:
-		input#pwd.form-control(type='password'  ng-model = "login.password")
-	button.btn.btn-default(type="submit" ng-click = "login.login()") Button
+	.containerLogin
+		.form.login
+			.form-group
+				label(for='usr') Name:
+				input#usr.form-control(type='text' ng-model = "login.userName")
+			.form-group
+				label(for='pwd') Password:
+				input#pwd.form-control(type='password'  ng-model = "login.password")
+			button.btn.btn-default(type="submit" ng-click = "login.registration()") Registration
+			button.btn.btn-default(type="submit" ng-click = "login.login()") Login
+			button.btn.btn-default.toProducts(type="submit" ng-click = "login.toProducts()")  View products

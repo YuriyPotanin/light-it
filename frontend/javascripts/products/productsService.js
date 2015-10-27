@@ -3,10 +3,10 @@ var app = require('../app');
 angular.module('productsModule')
 	.factory('productsService', productsService);
 
-productsService.$inject = ['$resource'];
+productsService.$inject = ['$resource', '$http','$cookies'];
 
 
-function productsService($resource, $cookies) {
+function productsService($resource, $http, $cookies) {
 	var loginMethod = {};
 
 	loginMethod.getProducts = function(callback) {
@@ -30,10 +30,9 @@ function productsService($resource, $cookies) {
 			rate: rate,
 			text: text
 		};
+		$http.post('http://smktesting.herokuapp.com/api/reviews/' + productId,reviewObject, {headers: {'Authorization':"Basic " +$cookies.get("productsCoockies")}
+}).success(function(response) {
 
-		var user = $resource("http://smktesting.herokuapp.com/api/reviews/" + productId);
-		user.save(reviewObject, function(response) {
-			callback(response);
 		});
 	};
 

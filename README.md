@@ -1,5 +1,5 @@
-# ardasTest  
-ardasTestServer  
+# light-it  
+Light-it  
 Для запуска сервера приложения необходимо выполнить следующие действия:  
 1) в корневой папке сервера выполнить команду:  
 ```shell
@@ -19,7 +19,3 @@ ardasTestServer
  node server.js
 ```
 5)страница проекта: localhost:2222/  
-6)для запуска Unit тестов выполните команду:  
-```shell
- grunt karma
-```
